@@ -1,0 +1,290 @@
+.center-y {
+  top: 50%;
+  left: 0;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.center-x {
+  top: 0;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.center-xy {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@font-face {
+  font-family: "Montserrat Light";
+  src: local("Montserrat Medium"), url("../assets/webfonts/montserrat-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat Medium";
+  src: local("Montserrat Medium"), url("../assets/webfonts/montserrat-medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"), url("../assets/webfonts/montserrat-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat Bold";
+  src: local("Montserrat Bold"), url("../assets/webfonts/montserrat-bold.woff") format("woff");
+}
+
+:root {
+  --lblue: #00b8ff;
+  --lblue-05: rgba(0, 184, 255, 0.5);
+  --black: #0a0000;
+  --dblue: #131c31;
+  --ldblue: #6d6d6d;
+  --blue: #007bff;
+  --white: #e5e8e7;
+  --white-05: rgba(229, 232, 231, 0.5);
+  --speed2x: 0.3s ease-in-out;
+  --speed: 0.5s ease-in-out;
+  --red: #ff005e;
+}
+
+html,
+body {
+  background-color: var(--black);
+  overflow: hidden;
+  color: #e5e8e7;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#response {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  bottom: 0;
+  z-index: -999;
+}
+
+#response.success {
+  opacity: 1;
+  visibility: visible;
+  z-index: 999;
+}
+
+#response.success .response-title {
+  color: var(--lblue);
+  border-color: var(--lblue);
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation: modal_fadeIn var(--speed2x) 1;
+          animation: modal_fadeIn var(--speed2x) 1;
+}
+
+#response.error {
+  opacity: 1;
+  visibility: visible;
+  z-index: 999;
+}
+
+#response.error .response-title {
+  border-color: var(--red);
+  opacity: 1;
+  visibility: visible;
+  color: var(--red);
+  -webkit-animation: modal_fadeIn var(--speed2x) 1;
+          animation: modal_fadeIn var(--speed2x) 1;
+}
+
+#response .response-title {
+  text-align: center;
+  font-family: "Montserrat Bold", sans-serif;
+  font-size: 2em;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  border: 2px solid transparent;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: var(--black);
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@-webkit-keyframes modal_fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(0.3);
+            transform: translate(-50%, -50%) scale(0.3);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal_fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(0.3);
+            transform: translate(-50%, -50%) scale(0.3);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+svg path {
+  stroke: var(--lblue);
+}
+
+@media (min-width: 1300px) {
+  .container {
+    max-width: 70vw;
+  }
+}
+
+#loader {
+  position: fixed;
+  background-color: var(--black);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: var(--speed);
+  transition: var(--speed);
+  z-index: 99999999999;
+}
+
+#loader.loaded {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#loader::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+  content: "";
+  border: 4px solid var(--lblue);
+  background-color: transparent;
+  border-radius: 5px;
+  -webkit-animation: loader 1s linear infinite;
+          animation: loader 1s linear infinite;
+  width: 100px;
+  height: 100px;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
+  }
+  40% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--lblue);
+  }
+  60% {
+    background-color: transparent;
+  }
+  70% {
+    background-color: var(--lblue);
+  }
+  80% {
+    background-color: transparent;
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(315deg);
+            transform: translate(-50%, -50%) rotate(315deg);
+  }
+}
+
+@keyframes loader {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
+  }
+  40% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--lblue);
+  }
+  60% {
+    background-color: transparent;
+  }
+  70% {
+    background-color: var(--lblue);
+  }
+  80% {
+    background-color: transparent;
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(315deg);
+            transform: translate(-50%, -50%) rotate(315deg);
+  }
+}
+
+.change-lang {
+  top: 30px;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #94a09c;
+  -webkit-transition: var(--speed2x);
+  transition: var(--speed2x);
+}
+
+@media (max-width: 576px) {
+  .change-lang {
+    position: relative;
+    top: auto;
+    left: auto;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.change-lang:hover {
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 0 0 5px var(--white);
+}
+
+@media (max-width: 767px) {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.text-neon {
+  color: var(--lblue);
+}
+
+.text-white {
+  color: var(--white);
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,109 @@
+.center-y {
+  top: 50%;
+  left: 0;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.center-x {
+  top: 0;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.center-xy {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@-webkit-keyframes picanim {
+  0% {
+    opacity: 0;
+    left: 40%;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes picanim {
+  0% {
+    opacity: 0;
+    left: 40%;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+#pic {
+  background-image: url(../assets/imgs/me.png);
+  background-size: cover;
+  background-position: 0 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 992px) {
+  #pic {
+    left: 50%;
+    background-position: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  #pic {
+    -webkit-transition: none;
+    transition: none;
+    left: 0;
+    opacity: 0.6;
+    background-position: 40%;
+  }
+}
+
+#header {
+  padding-top: 0;
+  height: 100vh;
+  padding-bottom: 0;
+}
+
+@media (min-width: 767px) {
+  #header.active #pic {
+    -webkit-animation: picanim 1s ease-out 1;
+            animation: picanim 1s ease-out 1;
+  }
+}
+
+#header .header-title {
+  font-family: "Montserrat", sans-serif, sans-serif;
+  font-size: 6vh;
+}
+
+@media (max-width: 767px) {
+  #header .header-title {
+    font-size: 5.5vw;
+  }
+}
+
+#header .header-subtitle {
+  font-family: "Montserrat Light", sans-serif, sans-serif;
+  font-size: 3vh;
+}
+
+@media (max-width: 767px) {
+  #header .header-subtitle {
+    font-size: 3.5vw;
+  }
+}
+/*# sourceMappingURL=header-intro.css.map */

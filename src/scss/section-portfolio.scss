@@ -1,0 +1,169 @@
+@import "partials/params";
+@import "partials/mixins";
+
+#portfolio {
+  .portfolio {
+    &-content {
+      margin: 0 auto;
+      position: relative;
+      padding: 2.5vh;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      flex-direction: row;
+      max-width: 1000px;
+      justify-content: center;
+      @include xl() {
+        max-width: 1000px;
+      }
+      @include lg() {
+        max-width: 760px;
+      }
+      @include md() {
+        padding: 0;
+      }
+    }
+
+    &-thumb {
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow: hidden;
+      background-size: cover;
+      transition: var(--speed);
+      filter: brightness(0.6) grayscale(1);
+      position: relative;
+      height: calc(100vh / 4);
+      z-index: 2;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        visibility: hidden;
+        opacity: 0;
+        background-color: var(--blue);
+        transition: var(--speed);
+      }
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+
+      @include sm() {
+        margin: 0 auto;
+        height: 150px;
+      }
+    }
+
+    &-title {
+      font-family: $font1-bold;
+      text-transform: lowercase;
+      padding: 20px;
+      text-align: center;
+      z-index: 3;
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      width: 100%;
+      transform: translate(0, -50%);
+      top: 50%;
+      left: 0;
+      color: var(--white);
+      transition: var(--speed);
+
+      @include md() {
+        font-size: 1.1em;
+      }
+
+      @include sm() {
+        font-size: 1em;
+      }
+    }
+
+    &-link {
+      display: block;
+      width: 100%;
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding: 10px;
+      position: relative;
+      &:nth-child(odd) {
+        &::before {
+          bottom: none;
+          left: 0;
+          right: none;
+          top: 0;
+          height: 100%;
+          width: 0;
+        }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        left: none;
+        right: 0;
+        opacity: 0;
+        transition: var(--speed);
+        visibility: hidden;
+        height: 100%;
+        background-color: var(--blue);
+        top: 0;
+        width: 0;
+      }
+
+      @include xl() {
+        flex: 0 0 43%;
+        max-width: 43%;
+      }
+      @include lg() {
+        flex: 0 0 40%;
+        max-width: 40%;
+      }
+      @include md() {
+        flex: 0 0 40%;
+        max-width: 40%;
+      }
+      @include sm() {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      &:hover {
+        .portfolio-title {
+          visibility: visible;
+          opacity: 1;
+        }
+        &::before {
+          visibility: visible;
+          opacity: 0.7;
+          width: 100%;
+        }
+        .portfolio-thumb {
+          &::before {
+            visibility: visible;
+            opacity: 0.8;
+          }
+          filter: none;
+        }
+      }
+    }
+  }
+}
+
+@keyframes hoverPortfolioAnim {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

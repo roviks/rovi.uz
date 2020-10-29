@@ -1,0 +1,169 @@
+@import "partials/params";
+@import "partials/mixins";
+
+@keyframes openMenu {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes closeMenu {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+}
+
+// Главное меню
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  bottom: 0;
+  transition: var(--speed2x);
+  z-index: 99;
+  background-color: var(--dblue);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  // появление меню
+
+  &.show {
+    display: flex;
+    animation: openMenu 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 forwards;
+  }
+  &.hide {
+    display: flex;
+    animation: closeMenu 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1
+      forwards;
+  }
+
+  .nav-link {
+    font-size: 5vh;
+    text-align: center;
+    transition: var(--speed2x);
+    color: var(--white-05);
+    position: relative;
+    font-family: $font1;
+    z-index: 999;
+
+    &:active {
+      color: $white;
+      text-shadow: 0 0 10px var(--white);
+    }
+  }
+
+  .center {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Панель слева
+.navbar {
+  position: fixed;
+  top: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  left: 0;
+  z-index: 100;
+  justify-content: center;
+  bottom: 0;
+  align-items: flex-start;
+  width: 90px;
+  background-color: transparent;
+  @include sm() {
+    justify-content: space-between;
+    align-items: center;
+    bottom: auto;
+    position: fixed;
+    top: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  &-toggler {
+    width: 55px;
+    height: 35px;
+    overflow: hidden;
+    z-index: 101;
+    border-radius: 0;
+    text-align: center;
+    position: relative;
+    display: none;
+    &:focus {
+      outline: inherit;
+    }
+    @include md(min) {
+      cursor: pointer;
+
+      &:hover {
+        .stick {
+          &-2 {
+            background-color: var(--neon);
+          }
+        }
+      }
+    }
+
+    .stick {
+      width: 70%;
+      height: 4px;
+      transition: var(--speed2x);
+      background-color: var(--white);
+      position: absolute;
+      top: calc(0% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+
+      &-2 {
+        top: calc(50% - 2px);
+      }
+
+      &-3 {
+        top: calc(100% - 4px - 5px);
+      }
+    }
+    &.show {
+      .stick {
+        left: calc(100% / 2 - 19px);
+
+        &-1 {
+          top: calc(50% - 2px);
+          transform: rotate(-45deg + 180);
+        }
+
+        &-2 {
+          opacity: 0;
+        }
+
+        &-3 {
+          top: calc(50% - 2px);
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}

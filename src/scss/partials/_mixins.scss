@@ -1,0 +1,69 @@
+@mixin font-face($font-name, $url) {
+  @font-face {
+    font-family: $font-name;
+    src: local(#{$font-name}), url(#{$url}) format("woff");
+  }
+}
+
+@mixin print() {
+  @media print {
+    @content;
+  }
+}
+
+@mixin centerXY() {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin centerY($left: 0) {
+  top: 50%;
+  left: $left;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+@mixin centerX($top: 0) {
+  top: $top;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.center {
+  &-y {
+    @include centerY();
+  }
+  &-x {
+    @include centerX();
+  }
+  &-xy {
+    @include centerXY();
+  }
+}
+
+@mixin sm($minMax: max, $break: 576px) {
+  @media (#{$minMax}-width: $break) {
+    @content;
+  }
+}
+
+@mixin md($minMax: max, $break: 767px) {
+  @media (#{$minMax}-width: $break) {
+    @content;
+  }
+}
+
+@mixin lg($minMax: max, $break: 992px) {
+  @media (#{$minMax}-width: $break) {
+    @content;
+  }
+}
+
+@mixin xl($minMax: max, $break: 1200px) {
+  @media (#{$minMax}-width: $break) {
+    @content;
+  }
+}

@@ -1,0 +1,38 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.footer {
+  background-image: linear-gradient(90deg, var(--blue) 0%, var(--dblue) 100%);
+  color: var(--white);
+  padding: 20px 30px;
+  position: absolute;
+  text-transform: lowercase;
+  font-family: $font1-light;
+  font-size: 2vh;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  transition: var(--speed2x);
+  animation: footerShow 2s ease-in-out 1;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes footerShow {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

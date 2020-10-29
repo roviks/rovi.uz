@@ -1,0 +1,44 @@
+{
+   "skills": [{
+         "title": "html5 & css3",
+         "value": 90
+      },
+      {
+         "title": "react.js",
+         "value": 45
+      },
+      {
+         "title": "c++",
+         "value": 48
+      },
+      {
+         "title": "sass & gulp",
+         "value": 85
+      },
+      {
+         "title": "php",
+         "value": 63
+      }
+   ],
+   "projects": [{
+         "title": "Сайт для института УзГИП",
+         "url": "https://uzgip.uz/",
+         "thumb": "/assets/imgs/uzgip.uz.png"
+      },
+      {
+         "title": "Музыкальный плеер",
+         "url": "/portfolio/musicplayer/",
+         "thumb": "/assets/imgs/musicplayer.png"
+      },
+      {
+         "title": "Сайт для канала Endless Sounds",
+         "url": "/portfolio/endless_sounds/",
+         "thumb": "/assets/imgs/endless.png"
+      },
+      {
+         "title": "Сайт для дизайнера Даниила Соколова",
+         "url": "/portfolio/endless/",
+         "thumb": "/assets/imgs/endless-f.png"
+      }
+   ]
+}

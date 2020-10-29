@@ -1,0 +1,127 @@
+@import "partials/params";
+@import "partials/mixins";
+
+@keyframes showAndHide {
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    transform: scale(0.85);
+  }
+
+  55% {
+    transform: scale(0.85);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.section {
+  background-color: var(--black) !important;
+  width: 100%;
+  display: none;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  position: absolute;
+  padding-top: 8vh;
+  transition: var(--speed2x);
+  @include sm() {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  &-title {
+    padding-bottom: 40px;
+    text-align: center;
+    font-family: $font1-bold;
+    font-size: 6vh;
+    margin: 0;
+    animation: show $speed 1;
+    position: relative;
+
+    @include sm() {
+      font-size: 2em;
+    }
+  }
+
+  &-subtitle {
+    font-size: 4vh;
+    font-family: $font1-medium;
+    padding-bottom: 2vh;
+    @include md() {
+      font-size: 3vh;
+    }
+  }
+
+  &-svg {
+    stroke-dasharray: 100;
+    transition: $speed;
+    animation: svgAnim $speed 1;
+    @include centerX(-20px);
+  }
+
+  &-content {
+    font-family: $font1-light;
+    text-align: center;
+    padding: 0;
+
+    p {
+      margin-bottom: 40px;
+      font-size: 3vh;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include sm() {
+        font-size: 1em;
+      }
+    }
+  }
+
+  &.active {
+    display: block;
+    z-index: 10;
+    opacity: 1;
+    animation: animVisible $speed;
+  }
+}
+
+@keyframes svgAnim {
+  0% {
+    stroke-dashoffset: -101;
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes animVisible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

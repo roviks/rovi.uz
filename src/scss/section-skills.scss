@@ -1,0 +1,143 @@
+@import "partials/params";
+@import "partials/mixins";
+
+@keyframes percent {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+#skills {
+  &.section {
+    //anim
+    &.active {
+      .skills {
+        &-wrap {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .skills {
+    &-wrap {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      padding-right: 0;
+      height: 5vh;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0;
+      opacity: 0;
+      transition: 0.5s ease;
+      position: relative;
+      margin: 3vh 0 0 0;
+
+      &:first-child {
+        margin: 0;
+      }
+
+      @include md(min) {
+        &:hover {
+          .skills-progress {
+            background-color: var(--lblue-05);
+            &-percent {
+              &::before {
+                background-color: var(--lblue);
+              }
+            }
+            &-value {
+              color: var(--lblue);
+            }
+          }
+        }
+      }
+      @include sm() {
+        justify-content: space-between;
+      }
+      @include md() {
+        justify-content: space-between;
+      }
+      &:active {
+        .skills {
+          &-progress {
+            background-color: var(--lblue-05);
+            &-percent {
+              &::before {
+                background-color: var(--lblue);
+              }
+            }
+            &-value {
+              color: var(--lblue);
+            }
+          }
+        }
+      }
+    }
+
+    &-name {
+      font-size: 4vh;
+      font-family: $font1-medium;
+      text-align: right;
+      user-select: none;
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      z-index: 9;
+      transform: translateY(-50%);
+      color: var(--black);
+
+      @include md() {
+        font-size: 3.7vw;
+        left: 3vw;
+      }
+    }
+
+    &-progress {
+      width: 100%;
+      flex: 0 0 70%;
+      transition: var(--speed2x);
+      height: 5vh;
+      max-width: 70%;
+      position: relative;
+      background-color: var(--white-05);
+      @include md() {
+        flex: 0 0 85%;
+        max-width: 85%;
+      }
+      &-percent {
+        height: 100%;
+        position: relative;
+
+        &::before {
+          position: absolute;
+          top: 0;
+          content: "";
+          transition: var(--speed2x);
+          width: 100%;
+          left: 0;
+          background-color: var(--white);
+          bottom: 0;
+        }
+      }
+      &-value {
+        flex: 0 0 10%;
+        max-width: 10%;
+        font-size: 4vh;
+        padding-left: 10px;
+        user-select: none;
+        font-family: $font1;
+        transition: var(--speed2x);
+        text-align: left;
+        @include md() {
+          font-size: 3.5vw;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import "partials/params";
+@import "partials/mixins";
+
+@keyframes picanim {
+  0% {
+    opacity: 0;
+    left: 40%;
+  }
+
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+#pic {
+  background-image: url(../assets/imgs/me.png);
+  background-size: cover;
+  background-position: 0 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  @include lg() {
+    left: 50%;
+    background-position: 50%;
+  }
+  @include sm() {
+    transition: none;
+    left: 0;
+    opacity: 0.6;
+    background-position: 40%;
+  }
+}
+#header {
+  padding-top: 0;
+  height: 100vh;
+  padding-bottom: 0;
+
+  &.active {
+    @include md(min) {
+      #pic {
+        animation: picanim 1s ease-out 1;
+      }
+    }
+  }
+
+  .header {
+    &-title {
+      font-family: $font1, sans-serif;
+      font-size: 6vh;
+      @include md() {
+        font-size: 5.5vw;
+      }
+    }
+
+    &-subtitle {
+      font-family: $font1-light, sans-serif;
+      font-size: 3vh;
+      @include md() {
+        font-size: 3.5vw;
+      }
+    }
+  }
+}

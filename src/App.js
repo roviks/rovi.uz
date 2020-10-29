@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Home from "./pages/Home";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import mobileDetect from "mobile-detect";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   if (window.innerWidth < 767 || new mobileDetect(window.navigator.userAgent).mobile()) {
+      document.body.classList.add("is-mobile");
+   }
+   return (
+      <Router>
+         <Route path="/" component={Home} />
+
+      </Router>
+   )
 }
 
-export default App;
+export default App

@@ -1,0 +1,187 @@
+@import "partials/params";
+@import "partials/mixins";
+
+#contacts {
+  .form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    &-control {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      text-transform: lowercase;
+      color: var(--white-05);
+      display: block;
+      font-size: 2vh;
+      flex: 0 0 60%;
+      max-width: 60%;
+      height: 5vh;
+      transition: var(--speed2x);
+      border-bottom: 2px solid var(--ldblue);
+      margin-bottom: 1.5vh;
+      resize: none;
+
+      @include md() {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      &:focus {
+        outline: inherit;
+        box-shadow: none;
+        border-color: var(--white);
+        color: var(--white);
+
+        & + .form-tooltip {
+          opacity: 1;
+          visibility: visible;
+          bottom: 25%;
+          z-index: 9;
+        }
+      }
+    }
+    &-tooltip {
+      position: absolute;
+      background-color: var(--lblue);
+      transition: var(--speed2x);
+      color: var(--black);
+      bottom: 20%;
+      left: 21%;
+      border-radius: 2px;
+      padding: 5px 10px;
+      opacity: 0;
+      box-shadow: 0 0 8px var(--black);
+      visibility: hidden;
+      font-family: $font1-bold;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 10%;
+        transform: translateY(-95%);
+        width: 0;
+        height: 0;
+        content: "";
+        border: 15px solid transparent;
+        border-bottom-color: var(--lblue);
+      }
+    }
+  }
+  textarea {
+    height: 15vh !important;
+    @include md() {
+      height: 10vh !important;
+    }
+    @include sm() {
+      height: 10vh !important;
+    }
+  }
+  // <button>
+  .btn-contacts {
+    background-color: transparent;
+    display: block;
+    letter-spacing: 5px;
+    border-radius: 0;
+    flex: 0 0 60%;
+    max-width: 60%;
+    margin-top: 20px;
+    color: var(--ldblue);
+    position: relative;
+    font-size: 2vh;
+    text-transform: uppercase;
+    border: 2px solid var(--ldblue);
+    font-family: $font1-bold;
+    transition: var(--speed2x);
+    z-index: 0;
+    cursor: pointer;
+
+    @include md() {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 2.5vh;
+    }
+    &::before {
+      background-color: var(--ldblue);
+      content: "";
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0 auto;
+      z-index: -1;
+      height: 0%;
+      transition: var(--speed2x);
+    }
+    &::after {
+      background-color: var(--lblue);
+      content: "";
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0 auto;
+      z-index: -1;
+      height: 0%;
+      transition: var(--speed2x);
+    }
+    &:hover {
+      color: var(--black);
+      border-color: transparent;
+
+      &::before {
+        height: 100%;
+      }
+
+      &::after {
+        height: 100%;
+        transition-delay: 0.3s;
+      }
+    }
+  }
+  // </button>
+
+  .contacts-icon {
+    flex: 0 0 60%;
+    max-width: 60%;
+    @include sm() {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    @include md() {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .contacts-icon-link {
+    color: var(--ldblue);
+    padding: 0;
+    transition: var(--speed2x);
+    font-size: 5vh;
+    font-family: $font1-light;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include md(min) {
+      &:hover {
+        color: var(--white);
+        text-shadow: 0 0 5px var(--white);
+        text-decoration: none;
+      }
+    }
+    @include lg() {
+      font-size: 3.3vh;
+      padding: 0 10px;
+    }
+    @include md() {
+      flex: 0 0 auto;
+      font-size: 3vh;
+    }
+  }
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
