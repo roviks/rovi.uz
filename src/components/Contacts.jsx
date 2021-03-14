@@ -56,7 +56,7 @@ const Contacts = React.memo(function Contacts({ className }) {
             className="form-control"
             placeholder="Your name or telegram*"
             onChange={handleChangeName}
-            // required
+            required
           />
           <textarea
             name="message"
@@ -65,7 +65,7 @@ const Contacts = React.memo(function Contacts({ className }) {
             className="form-control"
             placeholder="Your e-mail*"
             onChange={handleChangeMessage}
-            // required
+            required
           ></textarea>
           <input
             type="text"
@@ -74,7 +74,7 @@ const Contacts = React.memo(function Contacts({ className }) {
             className="form-control"
             placeholder={`${a}+${b}`}
             onChange={handleChangeCapt}
-            // required
+            required
           />
           <div className="form-tooltip">
             {a} + {b} =

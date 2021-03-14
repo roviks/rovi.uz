@@ -41,10 +41,26 @@
   align-items: center;
 
   // появление меню
-
   &.show {
     display: flex;
     animation: openMenu 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1 forwards;
+    .stick {
+      left: calc(100% / 2 - 19px);
+
+      &-1 {
+        top: calc(50% - 2px);
+        transform: rotate(-45deg + 180);
+      }
+
+      &-2 {
+        opacity: 0;
+      }
+
+      &-3 {
+        top: calc(50% - 2px);
+        transform: rotate(45deg);
+      }
+    }
   }
   &.hide {
     display: flex;
@@ -146,24 +162,6 @@
         top: calc(100% - 4px - 5px);
       }
     }
-    &.show {
-      .stick {
-        left: calc(100% / 2 - 19px);
-
-        &-1 {
-          top: calc(50% - 2px);
-          transform: rotate(-45deg + 180);
-        }
-
-        &-2 {
-          opacity: 0;
-        }
-
-        &-3 {
-          top: calc(50% - 2px);
-          transform: rotate(45deg);
-        }
-      }
-    }
+    
   }
 }

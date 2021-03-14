@@ -2,7 +2,6 @@ import React from "react";
 import "../scss/section.scss";
 import "../scss/section-skills.scss";
 const Skills = React.memo(function Skills({ className, items }) {
-  console.log(items);
   return (
     <section id="skills" className={`section  ${className ? className : ""}`}>
       <h5 className="section-title">

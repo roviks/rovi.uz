@@ -9,7 +9,12 @@ function App() {
    }
    return (
       <Router>
-         <Route path="/" component={Home} />
+         <Route path="/" exact>
+            <Home lang="ru" />
+         </Route>
+         <Route path="/en">
+            <Home lang="en" />
+         </Route>
 
       </Router>
    )

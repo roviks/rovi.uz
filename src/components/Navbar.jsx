@@ -5,7 +5,6 @@ const Navbar = React.memo(function Navbar({
   setIndex,
   onOpeningMenu,
 }) {
-  console.log("NAVBAR");
   const handleChangeSection = (index) => {
     setIndex(index);
   };
@@ -28,41 +27,41 @@ const Navbar = React.memo(function Navbar({
             {currentIndex + 1}
           </div>
           <div className="section-slider-ids">
-            <a
-              href="#header"
+            <Link
+              to="#header"
               onClick={() => handleChangeSection(0)}
               className={`anchor section-slider-id ${
                 currentIndex === 0 && "active"
               }`}
-            ></a>
-            <a
-              href="#about"
+            ></Link>
+            <Link
+              to="#about"
               onClick={() => handleChangeSection(1)}
               className={`anchor section-slider-id ${
                 currentIndex === 1 && "active"
               }`}
-            ></a>
-            <a
-              href="#skills"
+            ></Link>
+            <Link
+              to="#skills"
               onClick={() => handleChangeSection(2)}
               className={`anchor section-slider-id ${
                 currentIndex === 2 && "active"
               }`}
-            ></a>
-            <a
-              href="#portfolio"
+            ></Link>
+            <Link
+              to="#portfolio"
               onClick={() => handleChangeSection(3)}
               className={`anchor section-slider-id ${
                 currentIndex === 3 && "active"
               }`}
-            ></a>
-            <a
-              href="#contacts"
+            ></Link>
+            <Link
+              to="#contacts"
               onClick={() => handleChangeSection(4)}
               className={`anchor section-slider-id ${
                 currentIndex === 4 && "active"
               }`}
-            ></a>
+            ></Link>
           </div>
           <div className="section-slider-counter max">5</div>
         </>

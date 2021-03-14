@@ -3,7 +3,7 @@ import "../scss/footer.scss";
 const Footer = React.memo(function Footer({ className }) {
   return (
     <footer id="footer" className={`footer  ${className ? className : ""}`}>
-      <div className="footer-right">© 2019-2020 rovi ibragimov.</div>
+      <div className="footer-right">© 2019-2021 rovi ibragimov.</div>
       <div className="footer-left">
         Developed with <i className="fa fa-heart text-danger"></i>
       </div>

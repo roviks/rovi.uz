@@ -33,13 +33,10 @@ const About = React.memo(function About({ className }) {
       </h5>
       <div className="section-content container about-content">
         <p>
-          Hello! Thank you for visiting my site. I'm Ibragimov Ravshan, a junior
-          front-end developer from Tashkent. I'm creating landing pages, web
-          apps, logos.
+          Hello! Thank you for visiting my site. I'm Ibragimov Ravshan, a junior front-end developer from Tashkent. I'm creating landing pages, web apps, logos.
         </p>
         <p>
-          My goal and dream is to contribute in any way to the development of IT
-          and beyond
+          My goal and dream is to contribute in any way to the development of IT and more.
         </p>
       </div>
     </section>
