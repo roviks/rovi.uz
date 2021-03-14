@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = React.memo(function Navbar({
   currentIndex,
   setIndex,
+  lang,
   onOpeningMenu,
 }) {
   const handleChangeSection = (index) => {
@@ -18,9 +19,10 @@ const Navbar = React.memo(function Navbar({
         <div className="stick stick-2"></div>
         <div className="stick stick-3"></div>
       </button>
-      <Link to="/en/" className="change-lang">
-        EN
-      </Link>
+      
+      { (lang === "en") && <Link to="/" className="change-lang">RU</Link> }
+      { (lang === "ru") && <Link to="/en/" className="change-lang">EN</Link> }
+
       {!document.body.classList.contains("is-mobile") ? (
         <>
           <div className="section-slider-counter current">

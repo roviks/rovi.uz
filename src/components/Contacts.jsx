@@ -1,21 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+import { token, chat_id } from "../bot";
 
-const Contacts = React.memo(function Contacts({ className }) {
-  let a = Math.floor(Math.random() * 100);
-  let b = Math.floor(Math.random() * 100);
+
+const Contacts = React.memo(function Contacts({ className, lang }) {
+  const [a, setA] = React.useState(null);
+  const [b, setB] = React.useState(null);
+  const [name, setName] = React.useState("");
+  const history = useHistory();
+  const [message, setMessage] = React.useState("");
+  const [captPassed, setCapt] = React.useState(false);
+
+  React.useEffect(() => {
+    setA(Math.floor(Math.random() * 100));
+    setB(Math.floor(Math.random() * 100));
+  }, []);
+
   const handleChangeName = (e) => {
-    console.log(e.target.value);
+    setName(e.target.value);
   };
   const handleChangeMessage = (e) => {
-    console.log(e.target.value);
+    setMessage(e.target.value);
   };
   const handleChangeCapt = (e) => {
-    console.log(e.target.value);
+    if (a + b === +e.target.value) {
+      setCapt(true);
+    } else {
+      setCapt(false);
+    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    if (captPassed) {
+      let text = `Отправил: *${name}*
+      Текст: *${message}*
+      Дата: *${new Date()}* `;
+      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${text}&parse_mode=markdown`;
+      axios
+        .get(url)
+        .then((response) => {
+          history.go(0);
+        })
+        .catch((error) => {
+          history.go(0);
+        });
+    }
   };
   return (
     <section id="contacts" className={`section  ${className ? className : ""}`}>
@@ -44,43 +74,84 @@ const Contacts = React.memo(function Contacts({ className }) {
             />
           </g>
         </svg>
-        <span className="text-neon">contacts</span>
+        {lang === "en" && <span className="text-neon">contacts</span>}
+        {lang === "ru" && <span className="text-neon">контакты</span>}
       </h5>
       <div className="section-content contact-content container">
-        <div className="section-subtitle">feedback</div>
+        {lang === "en" && <div className="section-subtitle">feedback</div>}
+        {lang === "ru" && (
+          <div className="section-subtitle">обратная связь</div>
+        )}
         <form onSubmit={handleSubmit} className="form">
-          <input
-            type="text"
-            autoComplete="off"
-            name="name"
-            className="form-control"
-            placeholder="Your name or telegram*"
-            onChange={handleChangeName}
-            required
-          />
-          <textarea
-            name="message"
-            autoComplete="off"
-            id="message"
-            className="form-control"
-            placeholder="Your e-mail*"
-            onChange={handleChangeMessage}
-            required
-          ></textarea>
-          <input
-            type="text"
-            autoComplete="off"
-            name="capt"
-            className="form-control"
-            placeholder={`${a}+${b}`}
-            onChange={handleChangeCapt}
-            required
-          />
+          {lang === "en" && (
+            <>
+              <input
+                type="text"
+                autoComplete="off"
+                name="name"
+                className="form-control"
+                placeholder="Your name or telegram*"
+                onChange={handleChangeName}
+                required
+              />
+              <textarea
+                name="message"
+                autoComplete="off"
+                id="message"
+                className="form-control"
+                placeholder="Your text*"
+                onChange={handleChangeMessage}
+                required
+              ></textarea>
+              <input
+                type="text"
+                autoComplete="off"
+                name="capt"
+                className="form-control"
+                placeholder={`${a}+${b}=?*`}
+                onChange={handleChangeCapt}
+                required
+              />
+            </>
+          )}
+          {lang === "ru" && (
+            <>
+              <input
+                type="text"
+                autoComplete="off"
+                name="name"
+                className="form-control"
+                placeholder="Ваше имя или телеграм*"
+                onChange={handleChangeName}
+                required
+              />
+              <textarea
+                name="message"
+                autoComplete="off"
+                id="message"
+                className="form-control"
+                placeholder="Ваше сообщение*"
+                onChange={handleChangeMessage}
+                required
+              ></textarea>
+              <input
+                type="text"
+                autoComplete="off"
+                name="capt"
+                className="form-control"
+                placeholder={`${a}+${b}=?*`}
+                onChange={handleChangeCapt}
+                required
+              />
+            </>
+          )}
+
           <div className="form-tooltip">
             {a} + {b} =
           </div>
           <button type="submit" className="btn btn-contacts">
-            SEND
+            {lang === "en" && <>SEND</>}
+            {lang === "ru" && <>ОТПРАВИТЬ</>}
           </button>
           <div className="row contacts-icon justify-content-between pt-3">
             <Link to="#" className="contacts-icon-link" title="Telegram">

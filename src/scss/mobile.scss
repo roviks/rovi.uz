@@ -108,7 +108,7 @@ body {
         &-title {
           position: static;
           transform: none;
-          background-color: #fff;
+          background-color: var(--dblue);
           visibility: visible;
           opacity: 1;
           color: var(--lblue);

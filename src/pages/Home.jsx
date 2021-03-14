@@ -25,7 +25,7 @@ import "../scss/footer.scss";
 import "../scss/menu.scss";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 
-function Home() {
+function Home({lang}) {
   const [currentSection, setcurrentSection] = React.useState(0);
   const [skillItems, setskillItems] = React.useState([]);
   const [portfolioItems, setportfolioItems] = React.useState([]);
@@ -62,44 +62,42 @@ function Home() {
     }
   };
   React.useEffect(() => {
-    axios.get("http://localhost:3000/db.json").then(({ data }) => {
+    axios.get("https://roviks.github.io/db.json").then(({ data }) => {
       setportfolioItems(data.projects);
       setskillItems(data.skills);
     });
   }, []);
   return document.body.classList.contains("is-mobile") ? (
     <>
-      <Menu isOpenedMenu={isOpenedMenu} handleOpeningMenu={onOpeningMenu} />
-      <Navbar onOpeningMenu={onOpeningMenu} />
-      <Header />
-      <About />
-      <Skills items={skillItems} />
-      <Portfolio items={portfolioItems} />
-      <Contacts />
-      <Footer />
+      <Menu lang={lang} isOpenedMenu={isOpenedMenu} handleOpeningMenu={onOpeningMenu} />
+      <Navbar lang={lang} onOpeningMenu={onOpeningMenu} />
+      <Header lang={lang} />
+      <About lang={lang} />
+      <Skills lang={lang} items={skillItems} />
+      <Portfolio lang={lang} items={portfolioItems} />
+      <Contacts lang={lang} />
+      <Footer lang={lang} />
     </>
   ) : (
-    <>
       <ReactScrollWheelHandler
         upHandler={prevIndex}
         timeout={500}
         downHandler={nextIndex}
       >
-        <Navbar currentIndex={currentSection} setIndex={setIndex} />
-        <Header className={`${currentSection === 0 ? "active" : ""}`} />
-        <About className={`${currentSection === 1 ? "active" : ""}`} />
-        <Skills
+        <Navbar lang={lang} currentIndex={currentSection} setIndex={setIndex} />
+        <Header lang={lang} className={`${currentSection === 0 ? "active" : ""}`} />
+        <About lang={lang} className={`${currentSection === 1 ? "active" : ""}`} />
+        <Skills lang={lang}
           className={`${currentSection === 2 ? "active" : ""}`}
           items={skillItems}
         />
-        <Portfolio
+        <Portfolio lang={lang}
           className={`${currentSection === 3 ? "active" : ""}`}
           items={portfolioItems}
         />
-        <Contacts className={`${currentSection === 4 ? "active" : ""}`} />
-        <Footer className={`${currentSection === 4 ? "active" : ""}`} />
+        <Contacts lang={lang} className={`${currentSection === 4 ? "active" : ""}`} />
+        <Footer lang={lang} className={`${currentSection === 4 ? "active" : ""}`} />
       </ReactScrollWheelHandler>
-    </>
   );
 }
 

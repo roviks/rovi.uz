@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import classnames from "classnames";
 import PropTypes from "prop-types";
-function Menu({ isOpenedMenu, handleOpeningMenu }) {
+function Menu({ isOpenedMenu, lang, handleOpeningMenu }) {
   React.useEffect(() => {
     const duration =
       parseFloat(
@@ -30,7 +30,10 @@ function Menu({ isOpenedMenu, handleOpeningMenu }) {
         className="nav-link"
         role="menuitem"
       >
-        главная
+              
+        { (lang === "en") && <>home</> }
+        { (lang === "ru") && <>главная</> }
+
       </a>
       <a
         href="#about"
@@ -38,7 +41,9 @@ function Menu({ isOpenedMenu, handleOpeningMenu }) {
         className="nav-link"
         role="menuitem"
       >
-        обо мне
+      
+        { (lang === "en") && <>about me</> }
+        { (lang === "ru") && <>обо мне</> }
       </a>
       <a
         href="#skills"
@@ -46,7 +51,9 @@ function Menu({ isOpenedMenu, handleOpeningMenu }) {
         className="nav-link"
         role="menuitem"
       >
-        мои навыки
+        
+        { (lang === "en") && <>my skills</> }
+        { (lang === "ru") && <>мои навыки</> }
       </a>
       <a
         href="#portfolio"
@@ -54,7 +61,8 @@ function Menu({ isOpenedMenu, handleOpeningMenu }) {
         className="nav-link"
         role="menuitem"
       >
-        мои работы
+        { (lang === "en") && <>my portfolio</> }
+        { (lang === "ru") && <>мои работы</> }
       </a>
       <a
         href="#contacts"
@@ -62,7 +70,8 @@ function Menu({ isOpenedMenu, handleOpeningMenu }) {
         className="nav-link"
         role="menuitem"
       >
-        контакты
+        { (lang === "en") && <>contacts</> }
+        { (lang === "ru") && <>контакты</> }
       </a>
     </div>
   );
@@ -70,6 +79,7 @@ function Menu({ isOpenedMenu, handleOpeningMenu }) {
 
 Menu.propTypes = {
   isOpenedMenu: PropTypes.bool,
+  lang: PropTypes.string,
   handleOpeningMenu: PropTypes.func,
 };
 export default Menu;

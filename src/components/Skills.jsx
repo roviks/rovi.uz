@@ -1,7 +1,6 @@
 import React from "react";
-import "../scss/section.scss";
-import "../scss/section-skills.scss";
-const Skills = React.memo(function Skills({ className, items }) {
+
+const Skills = React.memo(function Skills({ className, lang, items }) {
   return (
     <section id="skills" className={`section  ${className ? className : ""}`}>
       <h5 className="section-title">
@@ -29,7 +28,9 @@ const Skills = React.memo(function Skills({ className, items }) {
             />
           </g>
         </svg>
-        my <span className="text-neon">skills</span>
+        { (lang === "en") && <>my <span className="text-neon">skills</span></> }
+        { (lang === "ru") && <>мои <span className="text-neon">навыки</span></> }
+
       </h5>
       <div className="section-content container">
         {items &&

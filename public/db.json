@@ -21,22 +21,34 @@
       }
    ],
    "projects": [{
-         "title": "Сайт для института УзГИП",
+         "title": {
+            "en": "Site for institute UZGIP",
+            "ru": "Сайт для института УзГИП"
+         },
          "url": "https://uzgip.uz/",
          "thumb": "/assets/imgs/uzgip.uz.png"
       },
       {
-         "title": "Музыкальный плеер",
+         "title": {
+            "en": "Music player",
+            "ru": "Музыкальный плеер"
+         },
          "url": "/portfolio/musicplayer/",
          "thumb": "/assets/imgs/musicplayer.png"
       },
       {
-         "title": "Сайт для канала Endless Sounds",
+         "title": {
+            "en": "Site for music channel Endless Sounds",
+            "ru": "Сайт для канала Endless Sounds"
+         },
          "url": "/portfolio/endless_sounds/",
          "thumb": "/assets/imgs/endless.png"
       },
       {
-         "title": "Сайт для дизайнера Даниила Соколова",
+         "title": {
+            "en": "Site for designer Daniil Sokolov",
+            "ru": "Сайт для дизайнера Даниила Соколова"
+         },
          "url": "/portfolio/endless/",
          "thumb": "/assets/imgs/endless-f.png"
       }

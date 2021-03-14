@@ -1,8 +1,6 @@
 import React from "react";
-import "../scss/section.scss";
-import "../scss/header-intro.scss";
 
-function Header({ className }) {
+function Header({ className, lang }) {
   return (
     <header id="header" className={`section  ${className ? className : ""}`}>
       <div id="pic"></div>
@@ -32,11 +30,16 @@ function Header({ className }) {
                 />
               </g>
             </svg>
-            <h1 className="header-title">
+            
+            {lang === "en" && <><h1 className="header-title">
               <span className="text-neon">personal page</span> <br /> of
-              ibragimov ravshan
+              ravshan ibragimov 
             </h1>
-            <div className="header-subtitle">junior front-end developer</div>
+            <div className="header-subtitle">junior front-end developer</div></>}
+            {lang === "ru" && <><h1 className="header-title">
+              <span className="text-neon">персональный сайт</span> <br /> равшана ибрагимова 
+            </h1>
+            <div className="header-subtitle">джуниор фронт-енд разработчик</div></>}
           </div>
         </div>
       </div>

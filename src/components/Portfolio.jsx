@@ -1,5 +1,6 @@
 import React from "react";
-const Portfolio = React.memo(function Portfolio({ className, items }) {
+
+const Portfolio = React.memo(function Portfolio({ className, lang, items }) {
   return (
     <section id="portfolio" className={`section ${className ? className : ""}`}>
       <h5 className="section-title">
@@ -27,7 +28,9 @@ const Portfolio = React.memo(function Portfolio({ className, items }) {
             />
           </g>
         </svg>
-        my <span className="text-neon">portfolio</span>
+        
+        { (lang === "en") && <>my <span className="text-neon">portfolio</span></> }
+        { (lang === "ru") && <>мои <span className="text-neon">работы</span></> }
       </h5>
       <div className="section-content portfolio-content">
         {items &&
@@ -40,7 +43,8 @@ const Portfolio = React.memo(function Portfolio({ className, items }) {
               <div className="portfolio-thumb">
                 <img src={item.thumb} alt="" />
               </div>
-              <div className="portfolio-title">{item.title}</div>
+              { (lang === "en") && <div className="portfolio-title">{item.title.en}</div> }
+              { (lang === "ru") && <div className="portfolio-title">{item.title.ru}</div> }
             </a>
           ))}
       </div>

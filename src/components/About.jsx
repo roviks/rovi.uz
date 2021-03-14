@@ -1,7 +1,5 @@
 import React from "react";
-import "../scss/section.scss";
-import "../scss/section-about.scss";
-const About = React.memo(function About({ className }) {
+const About = React.memo(function About({ className, lang }) {
   return (
     <section id="about" className={`section ${className ? className : ""}`}>
       <h5 className="section-title">
@@ -29,15 +27,22 @@ const About = React.memo(function About({ className }) {
             />
           </g>
         </svg>
-        <span className="text-neon">about</span> me
+        { (lang === "en") && <><span className="text-neon">about</span> me</> }
+        { (lang === "ru") && <><span className="text-neon">обо</span> мне</> }
       </h5>
       <div className="section-content container about-content">
-        <p>
+      { (lang === "en") && <><p>
           Hello! Thank you for visiting my site. I'm Ibragimov Ravshan, a junior front-end developer from Tashkent. I'm creating landing pages, web apps, logos.
         </p>
         <p>
-          My goal and dream is to contribute in any way to the development of IT and more.
-        </p>
+          Contributing to the development of IT is my dream and purpose.
+        </p></> }
+        { (lang === "ru") && <><p>
+        Привет! Благодарю вас за посещение моего сайта. Я Ибрагимов Равшан, джуниор фронт-енд разработчик из Ташкента. Я создаю лендинг-сайты, веб-приложения, логотипы.</p>
+        <p>
+          Моя цель и мечта - внести свой вклад в развитие ИТ и не только.
+        </p></> }
+        
       </div>
     </section>
   );
