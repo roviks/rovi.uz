@@ -79,7 +79,8 @@
     "deploy": "gh-pages -b master -d build",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "server": "npx json-server --watch public/db.json --port 3004"
+    "server": "npx json-server --watch public/db.json --port 3004",
+    "serve": "serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -150,6 +151,7 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^0.16.1"
+    "json-server": "^0.16.1",
+    "serve": "^11.3.2"
   }
 }
