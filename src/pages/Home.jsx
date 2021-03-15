@@ -24,6 +24,7 @@ import "../scss/mobile.scss";
 import "../scss/footer.scss";
 import "../scss/menu.scss";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
+import data from "../assets/db.json";
 
 function Home({lang}) {
   const [currentSection, setcurrentSection] = React.useState(0);
@@ -62,10 +63,10 @@ function Home({lang}) {
     }
   };
   React.useEffect(() => {
-    axios.get("https://rovi.uz/db.json").then(({ data }) => {
+    
       setportfolioItems(data.projects);
       setskillItems(data.skills);
-    });
+    
   }, []);
   return document.body.classList.contains("is-mobile") ? (
     <>
