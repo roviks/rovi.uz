@@ -62,7 +62,7 @@ function Home({lang}) {
     }
   };
   React.useEffect(() => {
-    axios.get("https://roviks.github.io/db.json").then(({ data }) => {
+    axios.get("https://rovi.uz/db.json").then(({ data }) => {
       setportfolioItems(data.projects);
       setskillItems(data.skills);
     });
